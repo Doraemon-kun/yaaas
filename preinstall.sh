@@ -30,6 +30,9 @@ timedatectl set-ntp true
 
 # Install packages and configure the mirrorlist file
 pacman -Sy --noconfirm pacman-contrib
+echo "--------------------------------------------------------------"
+echo "Creating mirrorlist (may take about five minutes)"
+echo "--------------------------------------------------------------"
 curl -s "https://archlinux.org/mirrorlist/?country=HK&country=ID&country=JP&country=SG&country=TW&country=TH&country=US&protocol=https&ip_version=4&use_mirror_status=on" | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n 15 - > /etc/pacman.d/mirrorlist
 
 # Partitioning the disk (SHOULD NOT BE ENABLE AND WILL NOT BE ENABLE BY DEFAULT. And if you want to use it, USE AT YOUR OWN RISK!)
